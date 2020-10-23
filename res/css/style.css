@@ -202,3 +202,31 @@ nav div.avatar-container {
 .like-button.liked {
     background-color: #01579b;
 }
+
+/* index page -> avatar-container(right top) -> drop down menu */
+
+ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    top:50px;
+    right:0;
+
+    width: auto;
+
+    background-color: white;
+    font-weight:bold;
+    position: absolute;
+    display: none;
+}
+
+li {
+    padding: 8px 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+li:hover {
+    background-color: #4d4d4d;
+    color: white;
+}
