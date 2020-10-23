@@ -2,10 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="res/js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="res/css/style.css">
     <title>Browse page</title>
 </head>
 <body>
-<h1>Browse page</h1>
-<a href="login.html">Navigate to login page</a>
+<header>
+    <nav>
+        <div class="logo-container">
+            <img src="res/images/logo.png" alt="postIt">
+        </div>
+        <div class="search-container">
+            <input type="text" name="search"><button type="button">Search</button>
+        </div>
+        <div class="avatar-container">
+            <img src="res/images/avatar.png" class="avatar" alt="Me">
+            <ul>
+                <li id="name"></li>
+                <li id="email"></li>
+                <li><a href="browse.html">Browse</a></li>
+                <li><a href="login.html">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<section class="main-container">
+    <div id="profile">
+    </div>
+</section>
+
 </body>
 </html>

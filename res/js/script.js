@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    //index page user information
     function loadUserInfo() {
         return $.get(
             {
@@ -40,5 +41,19 @@ $(document).ready(function() {
             $(this).attr('id', '1');
         }
     });
+
+    //browse page profiles
+    $.get('https://private-anon-a1e1b8d498-wad20postit.apiary-mock.com/profiles', function (response) {
+        for (profile of response) {
+            let div = $('<div class="profile">');
+            let userName = $('<h1>').text(profile.firstname + " " + profile.lastname);
+            let img = $('<img>').attr('src', profile.avatar);
+
+            div.append(img)
+            div.append(userName)
+
+            $('#profile').append(div)
+        }
+    })
 
 });
