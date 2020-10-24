@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+
     //index page user information
     function loadUserInfo() {
         return $.get(
@@ -48,13 +50,35 @@ $(document).ready(function() {
             let div = $('<div class="profile">');
             let userName = $('<h1>').text(profile.firstname + " " + profile.lastname);
             let img = $('<img>').attr('src', profile.avatar);
+            let button = $('<button/>', {
+                text: 'Follow',
+                id: 'followButton',
+                click: ClickFollowButton
+            });
+
+
 
             div.append(img)
             div.append(userName)
+            div.append(button)
 
             $('#profile').append(div)
         }
     })
+
+    //browse page. button follow to followed
+
+    let pressed = true;
+
+    function ClickFollowButton() {
+        if (pressed === true) {
+            pressed = false;
+            $(this).text("Followed")
+        } else {
+            pressed = true;
+            $(this).text("Follow")
+        }
+    }
 
     //index page for post
     $.get('https://private-anon-a1e1b8d498-wad20postit.apiary-mock.com/posts', function (response) {
