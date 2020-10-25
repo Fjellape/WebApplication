@@ -84,32 +84,44 @@ $(document).ready(function() {
     $.get('https://private-anon-a1e1b8d498-wad20postit.apiary-mock.com/posts', function (response) {
         for (post of response) {
             let div = $('<div class="post">');
-
-            let userName = $('<h1>').text(post.author.firstname + " " + post.author.lastname);
+            let postauthor = $('<div class="post-author">');
+            let postauthorInfo = $('<nav class="post-author-info">');
+            let userName = $('<small>').text(post.author.firstname + " " + post.author.lastname);
             let img = $('<img>').attr('src', post.author.avatar);
-            let time = $('<p>').text(post.createTime);
-            let text = $('<p>').text(post.text);
+            let time = $('<small>').text(post.createTime);
+            let text = $('<p class="post-title">').text(post.text);
             //let likes = $('<p>').text(post.likes);
-            let likes = $('<button/>', {
+
+            postauthorInfo.append(img);
+            postauthorInfo.append(userName);
+            postauthorInfo.append(time);
+            postauthor.append(postauthorInfo);
+
+            let likes = $('<button>', {
                 text: post.likes,
                 id: 'likeButton',
                 click: ClickLikeButton
             });
 
-            div.append(img)
-            div.append(userName)
+            //div.append(img)
+            //div.append(userName)
+            div.append(postauthor);
             div.append(time)
             div.append(text)
 
             // Need to add media. Media can be empty. Media can be images or video.
             let media;
+            let mediaImage = $('<div class="post-image">');
             if (post.media != null) {
                 if (post.media.type === 'image') {
                     media = $('<img>').attr('src', post.media.url);
-                    div.append(media)
+                    mediaImage.append(media)
+                    div.append(mediaImage)
                 } else if (post.media.type === 'video') {
-                    media = $('<video>').attr('src', post.media.url)
-                    div.append(media)
+                    media = $('<video width="320", height="240", controls>').attr('src', post.media.url)
+                    mediaImage.append(media)
+                    div.append(mediaImage)
+                    //div.append(media)
                 }
             }
 
@@ -122,12 +134,15 @@ $(document).ready(function() {
     //index page. like button
     let likePressed = true
     function ClickLikeButton() {
+
         if (likePressed === true) {
-            likePressed = false;
+
             $(this).css('background-color','#868184');
+            likePressed = false;
         } else {
-            likePressed = true;
             $(this).css('background-color','#01579B');
+            likePressed = true;
+
         }
     }
 
