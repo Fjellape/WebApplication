@@ -131,6 +131,4 @@ $(document).ready(function() {
         }
     }
 
-    $('<video>').get(0).play()
-
 });
