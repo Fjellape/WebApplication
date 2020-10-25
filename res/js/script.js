@@ -68,15 +68,15 @@ $(document).ready(function() {
 
     //browse page. button follow to followed
 
-    let pressed = true;
+    let pressed = false;
 
     function ClickFollowButton() {
         if (pressed === true) {
             pressed = false;
-            $(this).text("Followed")
+            $(this).text("Follow")
         } else {
             pressed = true;
-            $(this).text("Follow")
+            $(this).text("Followed")
         }
     }
 
@@ -89,17 +89,48 @@ $(document).ready(function() {
             let img = $('<img>').attr('src', post.author.avatar);
             let time = $('<p>').text(post.createTime);
             let text = $('<p>').text(post.text);
-            let likes = $('<p>').text(post.likes);
-            // Need to add media. Media can be empty. Media can be images or video.
+            //let likes = $('<p>').text(post.likes);
+            let likes = $('<button/>', {
+                text: post.likes,
+                id: 'likeButton',
+                click: ClickLikeButton
+            });
 
             div.append(img)
             div.append(userName)
             div.append(time)
             div.append(text)
+
+            // Need to add media. Media can be empty. Media can be images or video.
+            let media;
+            if (post.media != null) {
+                if (post.media.type === 'image') {
+                    media = $('<img>').attr('src', post.media.url);
+                    div.append(media)
+                } else if (post.media.type === 'video') {
+                    media = $('<video>').attr('src', post.media.url)
+                    div.append(media)
+                }
+            }
+
             div.append(likes)
 
             $('#post').append(div)
         }
     })
+
+    //index page. like button
+    let likePressed = true
+    function ClickLikeButton() {
+        if (likePressed === true) {
+            likePressed = false;
+            $(this).css('background-color','#868184');
+        } else {
+            likePressed = true;
+            $(this).css('background-color','#01579B');
+        }
+    }
+
+    $('<video>').get(0).play()
 
 });
