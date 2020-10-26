@@ -250,27 +250,21 @@ li:hover {
     width: 100%;
     min-height: 100%;
     margin: auto auto;
-    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .profile {
-    width: 41%;
-    height: 150px;
-    padding: 25px;
-    margin: 10px;
+    width: 45%;
+    min-width: 100px;
+    min-height: 150px;
+    margin: 5px;
     border: 1px solid lightgray;
-    border-radius: 16px;
+    border-radius: 10px;
     text-align: center;
 }
-
-.profile:nth-child(odd){
-    float: left;
-}
-
-.profile:nth-child(even){
-    float: right;
-}
-
 
 
 .profile img {
