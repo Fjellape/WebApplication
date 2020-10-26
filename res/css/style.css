@@ -241,7 +241,7 @@ li:hover {
 .followButton{
     background-color: purple;
     color: white;
-    padding: 5px 12px;
+    padding: 8px 16px;
     border: 2px solid purple;
     object-position: bottom;
 }
@@ -251,14 +251,13 @@ li:hover {
     min-height: 100%;
     margin: auto auto;
     background-color: #ffffff;
-    display: flex;
 }
 
 .profile {
-    width: 100%;
+    width: 41%;
     height: 150px;
     padding: 25px;
-    margin: 0;
+    margin: 10px;
     border: 1px solid lightgray;
     border-radius: 16px;
     text-align: center;
@@ -275,8 +274,8 @@ li:hover {
 
 
 .profile img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 100%;
     object-fit: cover;
     object-position: top;

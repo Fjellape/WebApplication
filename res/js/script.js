@@ -47,7 +47,7 @@ $(document).ready(function() {
     $.get('https://private-anon-a1e1b8d498-wad20postit.apiary-mock.com/profiles', function (response) {
         for (profile of response) {
             let div = $('<div class="profile">');
-            let userName = $('<small>').text(profile.firstname + " " + profile.lastname);
+            let userName = $('<p>').text(profile.firstname + " " + profile.lastname);
 
             let img = $('<img>').attr('src', profile.avatar);
             let button = $('<button/>', {
@@ -57,10 +57,8 @@ $(document).ready(function() {
             });
             button.addClass("followButton")
 
-            let p = $('<p>')
-            p.append(userName)
             div.append(img)
-            div.append(p)
+            div.append(userName)
             div.append(button)
 
             $('.profile-container').append(div)
