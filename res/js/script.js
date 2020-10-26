@@ -66,15 +66,11 @@ $(document).ready(function() {
     })
 
     //browse page. button follow to followed
-    let pressed = false;
-
     function ClickFollowButton() {
-        if (pressed === true) {
-            pressed = false;
+        if ($(this).css('background-color') === 'rgb(255, 255, 255)') {
             $(this).text("Follow");
             $(this).css({"background-color": "purple", "color": "white"});
         } else {
-            pressed = true;
             $(this).text("Followed");
             $(this).css({"background-color": "white", "color": "purple"});
 
@@ -133,17 +129,11 @@ $(document).ready(function() {
     })
 
     //index page. like button
-    let likePressed = true
     function ClickLikeButton() {
-
-        if (likePressed === true) {
-
+        if ($(this).css('background-color') === 'rgb(1, 87, 155)') {
             $(this).css('background-color','#868184');
-            likePressed = false;
         } else {
             $(this).css('background-color','#01579B');
-            likePressed = true;
-
         }
     }
 
