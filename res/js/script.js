@@ -17,12 +17,6 @@ $(document).ready(function() {
         );
     }
 
-    function displayUserInfo(user) {
-        $('#name').text(user.firstname + " " + user.lastname);
-        $('#email').text(user.email);
-        $(".avatar").attr("src", user.avatar);
-    }
-
     loadUserInfo()
         .then(function (user) {
             displayUserInfo(user)
@@ -31,6 +25,11 @@ $(document).ready(function() {
             alert('Error loading user info')
         });
 
+    function displayUserInfo(user) {
+        $('#name').text(user.firstname + " " + user.lastname);
+        $('#email').text(user.email);
+        $(".avatar").attr("src", user.avatar);
+    }
 
     // on click on avatar-container
     $(".avatar-container").click(function() {
@@ -48,35 +47,39 @@ $(document).ready(function() {
     $.get('https://private-anon-a1e1b8d498-wad20postit.apiary-mock.com/profiles', function (response) {
         for (profile of response) {
             let div = $('<div class="profile">');
-            let userName = $('<h1>').text(profile.firstname + " " + profile.lastname);
+            let userName = $('<small>').text(profile.firstname + " " + profile.lastname);
+
             let img = $('<img>').attr('src', profile.avatar);
             let button = $('<button/>', {
                 text: 'Follow',
                 id: 'followButton',
                 click: ClickFollowButton
             });
+            button.addClass("followButton")
 
-
-
+            let p = $('<p>')
+            p.append(userName)
             div.append(img)
-            div.append(userName)
+            div.append(p)
             div.append(button)
 
-            $('#profile').append(div)
+            $('.profile-container').append(div)
         }
     })
 
     //browse page. button follow to followed
-
     let pressed = false;
 
     function ClickFollowButton() {
         if (pressed === true) {
             pressed = false;
-            $(this).text("Follow")
+            $(this).text("Follow");
+            $(this).css({"background-color": "purple", "color": "white"});
         } else {
             pressed = true;
-            $(this).text("Followed")
+            $(this).text("Followed");
+            $(this).css({"background-color": "white", "color": "purple"});
+
         }
     }
 
